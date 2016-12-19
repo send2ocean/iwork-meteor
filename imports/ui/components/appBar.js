@@ -1,6 +1,4 @@
 import React from 'react';
-
-
 import AppBar from 'material-ui/AppBar';
 import Drawer from 'material-ui/Drawer';
 import RaisedButton from 'material-ui/RaisedButton';
@@ -23,8 +21,6 @@ import Download from 'material-ui/svg-icons/file/file-download';
 import Delete from 'material-ui/svg-icons/action/delete';
 import FontIcon from 'material-ui/FontIcon';
 
-import { Link,browserHistory } from 'react-router'
-
 import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
@@ -44,8 +40,8 @@ const Logged = (props) => (
     targetOrigin={{horizontal: 'right', vertical: 'top'}}
     anchorOrigin={{horizontal: 'right', vertical: 'top'}}
   >
-    <MenuItem primaryText="Refresh" />
-    <MenuItem primaryText="Help" />
+    // <MenuItem primaryText="Refresh" />
+    // <MenuItem primaryText="Help" />
     {Meteor.userId() ? <MenuItem primaryText="Sign out" onTouchTap={Meteor.logout()}/> : "noting" }
 
   </IconMenu>
@@ -68,10 +64,6 @@ class Home extends React.Component {
   xyz(event){
     console.log('xyz')
   }
-  logout(event) {
-      console.log('logout')
-    Meteor.logout();
-  }
 
   render() {
     return (
@@ -93,15 +85,13 @@ class Home extends React.Component {
 
 	          />
           	<Menu onItemTouchTap={this.handleToggled} >
-
-              <MenuItem primaryText="Login" leftIcon={<RemoveRedEye />}  containerElement={<Link to="/login" />} />
-              <MenuItem primaryText="FRM" leftIcon={<PersonAdd />} containerElement={<Link to="/frm" />}   />
-              <MenuItem primaryText="Get Tables" leftIcon={<ContentLink />} containerElement={<Link to="/table" />}/>
+              <MenuItem primaryText="Roles" leftIcon={<PersonAdd />}     />
+              <MenuItem primaryText="Accounts" leftIcon={<ContentLink />}  />
               <Divider />
-              <MenuItem primaryText="Google Map" leftIcon={<ContentCopy />} containerElement={<Link to="/gmap" />}/>
-              <MenuItem primaryText="Download" leftIcon={<Download />} />
+              <MenuItem primaryText="Google Map" leftIcon={<ContentCopy />}  />
+              <MenuItem primaryText="Organazations" leftIcon={<Download />} />
               <Divider />
-              <MenuItem primaryText="Remove" leftIcon={<Delete />}  onTouchTap = { this.xyz}/>
+              <MenuItem primaryText="Orders" leftIcon={<Delete />}  onTouchTap = { this.xyz}/>
             </Menu>
 	        </Drawer>
           {this.props.children}
