@@ -2,7 +2,7 @@
 import _ from "lodash";
 
 import {
-  default as React,
+   React,
   Component,
 } from "react";
 
@@ -36,22 +36,26 @@ const GettingStartedGoogleMap = withGoogleMap(props => (
   </GoogleMap>
 ));
 
-export default class GettingStartedExample extends Component {
+class GettingStartedExample extends Component {
 
-  state = {
-    markers: [{
-      position: {
-        lat: 14.451950,
-        lng: 120.925871,
-      },
-      key: `Phili`,
-      defaultAnimation: 2,
-    }],
-  };
+  constructor(props){
+      super(props);
+      this.state = {
+          markers: [{
+            position: {
+              lat: 14.451950,
+              lng: 120.925871,
+            },
+            key: `Phili`,
+            defaultAnimation: 2,
+          }],
+        }
+          handleMapLoad = this.handleMapLoad.bind(this);
+          handleMapClick = this.handleMapClick.bind(this);
+          handleMarkerRightClick = this.handleMarkerRightClick.bind(this);
+  }
 
-  handleMapLoad = this.handleMapLoad.bind(this);
-  handleMapClick = this.handleMapClick.bind(this);
-  handleMarkerRightClick = this.handleMarkerRightClick.bind(this);
+
 
   handleMapLoad(map) {
     this._mapComponent = map;
@@ -115,3 +119,4 @@ export default class GettingStartedExample extends Component {
     );
   }
 }
+export default  GettingStartedExample

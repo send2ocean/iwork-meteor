@@ -1,10 +1,11 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
 import { render } from 'react-dom';
+import '../imports/startup/accounts-config.js';
 
-import App from '../imports/ui/App.jsx';
 injectTapEventPlugin = require("react-tap-event-plugin");
 Meteor.startup(() => {
+  console.log('start up meteor app')
   injectTapEventPlugin();
-  render(<App />, document.getElementById('render-target'));
+  //render(<App />, document.getElementById('render-target'));
 });

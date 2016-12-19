@@ -24,13 +24,18 @@ import Delete from 'material-ui/svg-icons/action/delete';
 import FontIcon from 'material-ui/FontIcon';
 
 import { Link,browserHistory } from 'react-router'
- 
+
+import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import { Meteor } from 'meteor/meteor';
 const styles = {
   title: {
     cursor: 'pointer',
   },
 };
 const Logged = (props) => (
+
   <IconMenu
     {...props}
     iconButtonElement={
@@ -41,7 +46,8 @@ const Logged = (props) => (
   >
     <MenuItem primaryText="Refresh" />
     <MenuItem primaryText="Help" />
-    <MenuItem primaryText="Sign out" />
+    {Meteor.userId() ? <MenuItem primaryText="Sign out" onTouchTap={Meteor.logout()}/> : "noting" }
+
   </IconMenu>
 );
 
@@ -62,17 +68,22 @@ class Home extends React.Component {
   xyz(event){
     console.log('xyz')
   }
-
+  logout(event) {
+      console.log('logout')
+    Meteor.logout();
+  }
 
   render() {
     return (
+      <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme)}>
+
 
 	     <div>
 	       <AppBar
 				    title={<span style={styles.title}>IWork</span>}
 				    onLeftIconButtonTouchTap={this.handleToggled}
 				    iconElementLeft={<IconButton  ><NavigationMenu /></IconButton>}
-				    iconElementRight={<Logged />}
+				    iconElementRight={<Logged  />}
   				/>
 
 	        <Drawer width={200}   open={this.state.open} >
@@ -95,7 +106,7 @@ class Home extends React.Component {
 	        </Drawer>
           {this.props.children}
 	      </div>
-
+  </MuiThemeProvider>
     );
   }
 
