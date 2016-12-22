@@ -1,5 +1,5 @@
 {
-  "name": "met-iwork",
+  "name": "meteor-iwork",
   "private": true,
   "scripts": {
     "start": "meteor run"
@@ -10,6 +10,7 @@
     "material-ui": "^0.16.5",
     "meteor-node-stubs": "~0.2.0",
     "react": "^15.4.1",
+    "react-addons-pure-render-mixin": "^15.4.1",
     "react-dom": "^15.4.1",
     "react-mounter": "^1.2.0",
     "react-tap-event-plugin": "^2.0.1"
